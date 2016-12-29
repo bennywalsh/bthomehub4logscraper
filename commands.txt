@@ -1,0 +1,13 @@
+while true; do python scrape.py >> /tmp/outbt; sleep 1; done
+
+cat /tmp/outbt | sort | uniq > /tmp/outbtfinal.log
+
+sed -e 's/\[\([^]]*\)\]/\[ \1 ]/g'
+
+
+
+
+
+cat /tmp/outbt | sort | uniq | sed -e 's/\[\([^]]*\)\]/\[ \1 ]/g' > /tmp/outbtips
+
+./ip_to_host.sh /tmp/outbtips > /tmp/outbthosts
